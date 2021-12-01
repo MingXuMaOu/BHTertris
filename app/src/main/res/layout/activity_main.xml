@@ -79,28 +79,28 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <Button
+        android:layout_height="100dp">
+        <ImageButton
             android:id="@+id/btnLeft"
-            android:text="Left"
+            android:src="@drawable/left_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"/>
-        <Button
-            android:id="@+id/btnTop"
-            android:text="Top"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <Button
+        <ImageButton
             android:id="@+id/btnRight"
-            android:text="Right"
+            android:src="@drawable/right_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"/>
-        <Button
+        <ImageButton
+            android:id="@+id/btnTop"
+            android:src="@drawable/top_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <ImageButton
             android:id="@+id/btnBottom"
-            android:text="Bottom"
+            android:src="@drawable/down_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"/>

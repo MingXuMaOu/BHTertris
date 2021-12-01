@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/BHTertris/app/src/main/res/drawable/down_button.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/BHTertris/app/src/main/res/drawable/left_button.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/BHTertris/app/src/main/res/drawable/right_button.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/BHTertris/app/src/main/res/drawable/top_button.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/BHTertris/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
