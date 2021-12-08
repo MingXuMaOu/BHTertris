@@ -5,7 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background1"
     tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_font"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:text="Something"
+            android:fontFamily="casual"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,7 +40,8 @@
         <FrameLayout
             android:id="@+id/layoutGame"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+        </FrameLayout>
         <LinearLayout
             android:id="@+id/layoutInfo"
             android:layout_gravity="bottom"
@@ -22,29 +49,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:background="#10000000"
-                android:gravity="center"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:text="下一块"
-                    android:textColor="#000000"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
                 <FrameLayout
-                    android:id="@+id/layoutNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:id="@+id/clock_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/clock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/clock_minute"
+                        android:src="@drawable/minute"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/clock_hour"
+                        android:src="@drawable/hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
             </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:background="#10000000"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <TextView-->
+<!--                    android:text="下一块"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/layoutNext"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:text="最高分数"
+                    android:text="目标分数"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -60,26 +110,32 @@
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/textNowScore"
+                    android:fontFamily="casual"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
-            <Button
+            <ImageButton
                 android:id="@+id/btnStart"
-                android:text="Start"
+                android:src="@drawable/start_draw"
+                android:scaleType="centerInside"
+                android:background="#00000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <Button
+            <ImageButton
                 android:id="@+id/btnPause"
-                android:text="Pause"
+                android:src="@drawable/pause_draw"
+                android:scaleType="centerInside"
+                android:background="#00000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
+        android:gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/btnLeft"
             android:src="@drawable/left_button"
@@ -87,7 +143,7 @@
             android:background="#00000000"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"/>
+            android:layout_height="60dp"/>
         <ImageButton
             android:id="@+id/btnRight"
             android:src="@drawable/right_button"
@@ -95,7 +151,7 @@
             android:background="#00000000"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"/>
+            android:layout_height="60dp"/>
         <ImageButton
             android:id="@+id/btnTop"
             android:src="@drawable/top_button"
@@ -103,7 +159,7 @@
             android:background="#00000000"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"/>
+            android:layout_height="60dp"/>
         <ImageButton
             android:id="@+id/btnBottom"
             android:src="@drawable/down_button"
@@ -111,8 +167,17 @@
             android:background="#00000000"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"/>
+            android:layout_height="60dp"/>
     </LinearLayout>
+        </LinearLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif"
+            android:visibility="gone"
+            android:src="@drawable/unnamed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
 
 
 </LinearLayout>

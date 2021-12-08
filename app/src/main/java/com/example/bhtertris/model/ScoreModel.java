@@ -1,8 +1,7 @@
 package com.example.bhtertris.model;
 
 public class ScoreModel {
-    public int score;
-
+    public static int score;
 
     public void addScore(int lines) {
         if(lines == 0){

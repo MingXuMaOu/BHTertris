@@ -9,7 +9,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View view;
     private View nextPanel;
     private TextView scoreText;
+    private TextView goalText;
     private GameController gameController;
     public Handler handler = new Handler(){
         @Override
@@ -33,9 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 view.invalidate();
                 nextPanel.invalidate();
                 scoreText.setText(gameController.scoreModel.score + "");
+                goalText.setText(Config.GOAL + "");
             }
         }
     };
+    private View clockView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
         initListener();
+
+
+
     }
+
 
 
     private void initView(){
@@ -60,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
         view.setLayoutParams(new FrameLayout.LayoutParams(Config.XWIDTH,Config.YHEIGHT));
-        view.setBackgroundColor(0x10000000);
+//        view.setBackgroundColor(0x10000000);
         layoutGame.setPadding(Config.PADDING,Config.PADDING,Config.PADDING,Config.PADDING);
         layoutGame.addView(view);
 
@@ -68,18 +80,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             protected void onDraw(Canvas canvas) {
                 super.onDraw(canvas);
-                gameController.drawNext(canvas,nextPanel.getWidth());
+//                gameController.drawNext(canvas,nextPanel.getWidth());
             }
         };
         LinearLayout layoutInfo = findViewById(R.id.layoutInfo);
         layoutInfo.setPadding(0,Config.PADDING,Config.PADDING,Config.PADDING);
         nextPanel.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,200));
         nextPanel.setBackgroundColor(0x20000000);
-        FrameLayout layoutNext = findViewById(R.id.layoutNext);
-        layoutNext.addView(nextPanel);
+//        FrameLayout layoutNext = findViewById(R.id.layoutNext);
+//        layoutNext.addView(nextPanel);
 
         scoreText = findViewById(R.id.textNowScore);
-
+        goalText = findViewById(R.id.textMaxScore);
     }
 
     private void initListener(){

@@ -1,8 +1,14 @@
 package com.example.bhtertris.model;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
+
+import com.example.bhtertris.R;
 
 import java.util.Random;
 
@@ -15,8 +21,10 @@ public class BoxsModel {
     private Point[] boxsNext;
     private int boxNextType;
     private int boxNextSize;
+    private Context context;
 
-    public BoxsModel(int boxSize){
+    public BoxsModel(int boxSize, Context context){
+        this.context = context;
         this.boxSize = boxSize;
         boxPaint = new Paint();
         boxPaint.setColor(0xff000000);
@@ -62,7 +70,16 @@ public class BoxsModel {
     public void drawBoxs(Canvas canvas){
         if(boxs != null){
             for (int i = 0; i < boxs.length; i++) {
-                canvas.drawRect(boxs[i].x * boxSize,boxs[i].y * boxSize,boxs[i].x * boxSize+ boxSize,boxs[i].y * boxSize+ boxSize,boxPaint);
+//                canvas.drawRect(boxs[i].x * boxSize,boxs[i].y * boxSize,boxs[i].x * boxSize+ boxSize,boxs[i].y * boxSize+ boxSize,boxPaint);
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.grass);
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                float scaleWidth = (float)boxSize / width;
+                float scaleHeight = (float)boxSize / height;
+                Matrix matrix = new Matrix();
+                matrix.postScale((float) (scaleWidth + 0.1),scaleHeight);
+                Bitmap newBitmap = Bitmap.createBitmap(bitmap,0,0,width,height,matrix,true);
+                canvas.drawBitmap(newBitmap,boxs[i].x * boxSize,boxs[i].y * boxSize,boxPaint);
             }
         }
     }
@@ -107,13 +124,23 @@ public class BoxsModel {
     }
 
 
-    public void drawNext(Canvas canvas,int width) {
+    public void drawNext(Canvas canvas,int w) {
         if(boxsNext != null) {
             if (boxNextSize == 0) {
-                boxNextSize = width / 5;
+                boxNextSize = w / 5;
             }
             for (int i = 0; i < boxsNext.length; i++) {
-                canvas.drawRect((boxsNext[i].x - 3) * boxNextSize, (boxsNext[i].y + 1) * boxNextSize, (boxsNext[i].x - 3) * boxNextSize + boxNextSize, boxsNext[i].y * boxNextSize, boxPaint);
+//                canvas.drawRect((boxsNext[i].x - 3) * boxNextSize, (boxsNext[i].y + 1) * boxNextSize, (boxsNext[i].x - 3) * boxNextSize + boxNextSize, boxsNext[i].y * boxNextSize, boxPaint);
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.grass);
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                float scaleWidth = (float)boxSize / width;
+                float scaleHeight = (float)boxSize / height;
+                Matrix matrix = new Matrix();
+                matrix.postScale(scaleWidth - 0.1f,scaleHeight - 0.1f);
+                Bitmap newBitmap = Bitmap.createBitmap(bitmap,0,0,width,height,matrix,true);
+                canvas.drawBitmap(newBitmap,(boxsNext[i].x - 3) * boxSize,(boxsNext[i].y )* boxSize,boxPaint);
+
             }
         }
     }
